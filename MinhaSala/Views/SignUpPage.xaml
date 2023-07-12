@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MinhaSala.Views.SignUpPage" Title="Cadastro">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowDefinitions="*,4*" >
+                <StackLayout Grid.Row="1" Padding="20,50">
+                    <Label Text="Nome de Exibição" Style="{StaticResource LabelStyle}" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="5,0,0,0"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry Text="{Binding Username}" MaxLength="20" ClearButtonVisibility="WhileEditing" Placeholder="Digite seu nome">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,-10,0,10"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Label Text="Email" Style="{StaticResource LabelStyle}" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="5,0,0,0"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry Text="{Binding Email}" ClearButtonVisibility="WhileEditing" Placeholder="Digite seu email">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,-10,0,10"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Label Text="Senha" Style="{StaticResource LabelStyle}" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="5,0,0,0"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry Text="{Binding Password}" IsPassword="True" ClearButtonVisibility="WhileEditing" Placeholder="Digite sua senha">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,-10,0,10"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Label Text="Confirmação de Senha" Style="{StaticResource LabelStyle}">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="5,0,0,0"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry Text="{Binding ConfirmPassword}" IsPassword="True" ClearButtonVisibility="WhileEditing" Placeholder="Confirme sua senha">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,-10,0,10"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Button Text="Cadastrar" Margin="0" Style="{StaticResource ButtonStyle}" Command="{Binding OnSignUpCommand}" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

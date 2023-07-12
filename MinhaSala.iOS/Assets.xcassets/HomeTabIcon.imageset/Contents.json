@@ -1,0 +1,27 @@
+{
+    "images": [
+        {
+            "filename": "HomeTabIcon.png",
+            "idiom": "universal",
+            "scale": "1x",
+            "size": "24x24"
+        },
+        {
+            "filename": "HomeTabIcon.png",
+            "idiom": "universal",
+            "scale": "2x",
+            "size": "24x24"
+        },
+        {
+            "filename": "HomeTabIcon.png",
+            "idiom": "universal",
+            "scale": "3x",
+            "size": "24x24"
+        }
+    ],
+    "info": {
+        "author": "xcode",
+        "template-rendering-intent": "template",
+        "version": 1
+    }
+}

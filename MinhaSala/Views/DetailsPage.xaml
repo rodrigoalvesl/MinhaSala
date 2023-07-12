@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MinhaSala.Views.DetailsPage" >
+
+    <ContentPage.Resources>
+        <Color x:Key="CardAccentColor">#C2BF9F</Color>
+        <Color x:Key="FontColor">#106F8D</Color>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="40">
+            <Frame IsClippedToBounds="True" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                               BackgroundColor="White"
+                               BorderColor="{StaticResource CardAccentColor}"
+                               CornerRadius="20"
+                               HasShadow="False">
+                <Grid RowDefinitions="*,*,*,*,*">
+                    <Label FontSize="18"  TextColor="{StaticResource FontColor}" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Disciplina: &#x0a;" />
+                                <Span Text="{Binding Item.Disciplina}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="1" FontSize="18" TextColor="{StaticResource FontColor}" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Dia: &#x0a;"/>
+                                <Span Text="{Binding Item.Dia}"/>
+                                <Span Text=" - FEIRA"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="2" FontSize="18" TextColor="{StaticResource FontColor}" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Sala: &#x0a;"/>
+                                <Span Text="{Binding Item.Sala}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="3" FontSize="18" TextColor="{StaticResource FontColor}" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Unidade: &#x0a;"/>
+                                <Span Text="{Binding Item.Unidade}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="4" FontSize="18" TextColor="{StaticResource FontColor}" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Curso: &#x0a;"/>
+                                <Span Text="{Binding Item.Curso}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

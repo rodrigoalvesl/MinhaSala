@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MinhaSala.Controls"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:tempSel="clr-namespace:MinhaSala.Controls"
+    x:Class="MinhaSala.Views.HomePage" Title="Aulas">
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Aulas" VerticalOptions="CenterAndExpand" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" FontSize="16" TextColor="Black"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary>
+                <Style TargetType="controls:SkeletonView">
+                    <Setter Property="BackgroundColor" Value="#E4E4E4"/>
+                    <Setter Property="CornerRadius" Value="4" />
+                    <Setter Property="HorizontalOptions" Value="Start" />
+                </Style>
+
+                <Style TargetType="BoxView" x:Key="SeparatorLine">
+                    <Setter Property="Color" Value="LightGray"/>
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                    <Setter Property="HeightRequest" Value="1" />
+                </Style>
+
+                <DataTemplate x:Key="EmptyUserTemplate">
+                    <Grid ColumnDefinitions="Auto, *"
+                          RowDefinitions="Auto, Auto, Auto, 1"
+                          ColumnSpacing="10"
+                          RowSpacing="5"
+                          Padding="0,10">
+
+                        <controls:SkeletonView Grid.Column="0"
+                                                   Grid.Row="0"
+                                                   Grid.RowSpan="3"
+                                                   Margin="20,0,0,10"
+                                                   HeightRequest="70"
+                                                   WidthRequest="70"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center">
+                            <controls:SkeletonView.Clip>
+                                <EllipseGeometry
+                                                Center="35,35"
+                                                RadiusX="35"
+                                                RadiusY="35"/>
+                            </controls:SkeletonView.Clip>
+
+                        </controls:SkeletonView>
+
+                        <controls:SkeletonView Grid.Column="1"
+                                                   Grid.Row="0"
+                                                   HeightRequest="16"
+                                                   WidthRequest="150"/>
+
+                        <controls:SkeletonView Grid.Column="1"
+                                                   Grid.Row="1"
+                                                   HeightRequest="16"
+                                                   WidthRequest="250"/>
+
+                        <controls:SkeletonView Grid.Column="1"
+                                                   Grid.Row="2"
+                                                   WidthRequest="150"
+                                                   HeightRequest="16"
+                                                   VerticalOptions="Start"/>
+
+                        <BoxView Style="{StaticResource SeparatorLine}"
+                                     Grid.Column="0"
+                                     Grid.Row="3"
+                                     Grid.ColumnSpan="2"/>
+                    </Grid>
+                </DataTemplate>
+            </ResourceDictionary>
+            <DataTemplate x:Key="EadTemplate">
+                <StackLayout>
+                    <Frame IsClippedToBounds="True"
+                               BackgroundColor="White"
+                               BorderColor="{StaticResource CardAccentBlue}"
+                               CornerRadius="10"
+                               Margin="10,10,10,30"
+                               Padding="0"
+                               HasShadow="False">
+                        <Grid RowDefinitions="*,*,Auto" ColumnDefinitions="Auto,*">
+                            <BoxView
+                                     Grid.RowSpan="3"
+                                     BackgroundColor="{StaticResource CardAccentBlue}"/>
+                            <Image Grid.Row="0" Grid.Column="0"
+                                   Source="sort"
+                                   Margin="8"/>
+                            <Image Grid.Row="1" Grid.Column="0"
+                                   Source="event"
+                                   Margin="8"/>
+                            <Image Grid.Row="2" Grid.Column="0"
+                                   Source="room"
+                                   Margin="8"/>
+                            <Grid Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                          Margin="5,10"
+                                          RowDefinitions="Auto,*,*">
+                                <Label Text="{Binding Disciplina}"  FontSize="14" FontAttributes="Bold" Margin="0,5,0,0" VerticalOptions="Start"  TextColor="{StaticResource FontColor}"/>
+                                <Label Grid.Row="1" Margin="0,15,0,0"
+                                       FontSize="16"
+                                       TextColor="{StaticResource FontColor}"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Horário: &#x0a;"/>
+                                            <Span Text="{Binding HoraInicio}"/>
+                                            <Span Text="Opcional"/>
+                                            <Span Text="{Binding HoraFim}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="2" Margin="0,8,0,0"  Text="{Binding Sala}" TextTransform="Uppercase"  FontSize="18" TextColor="{StaticResource FontColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Sala: &#x0a;"/>
+                                            <Span Text="Ensino a distância"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <!--<Label Grid.Row="2" Text="{Binding Dia}" FontSize="18"  TextColor="{StaticResource FontColor}"
+                                           HorizontalOptions="EndAndExpand" Margin="0,8,10,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Dia: &#x0a;"/>
+                                            <Span Text="{Binding Dia}" TextTransform="Lowercase" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>-->
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="PresencialTemplate">
+                <StackLayout>
+                    <Frame IsClippedToBounds="True"
+                               BackgroundColor="White"
+                               BorderColor="{StaticResource CardAccentGreen}"
+                               CornerRadius="10"
+                               Margin="10,10,10,30"
+                               Padding="0"
+                               HasShadow="False">
+                        <Grid RowDefinitions="*,*,Auto" ColumnDefinitions="Auto,*">
+                            <BoxView
+                                     Grid.RowSpan="3"
+                                     BackgroundColor="{StaticResource CardAccentGreen}"/>
+                            <Image Grid.Row="0" Grid.Column="0"
+                                   Source="sort"
+                                   Margin="8"/>
+                            <Image Grid.Row="1" Grid.Column="0"
+                                   Source="event"
+                                   Margin="8"/>
+                            <Image Grid.Row="2" Grid.Column="0"
+                                   Source="room"
+                                   Margin="8"/>
+                            <Grid Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                          Margin="5,10"
+                                          RowDefinitions="Auto,*,*">
+                                <Label Text="{Binding Disciplina}"  FontSize="14" FontAttributes="Bold" Margin="0,5,0,0" VerticalOptions="Start"  TextColor="{StaticResource FontColor}"/>
+                                <!--<Label Grid.Row="1" Text="{Binding Dia}" FontSize="12" FontAttributes="None"  TextColor="{StaticResource FontColor}"/>-->
+                                <Label Grid.Row="1"
+                                       Margin="0,15,0,0"
+                                       FontSize="16"
+                                       TextColor="{StaticResource FontColor}"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Horário: &#x0a;"/>
+                                            <Span Text="{Binding HoraInicio}"/>
+                                            <Span Text=" - "/>
+                                            <Span Text="{Binding HoraFim}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="2" Margin="0,8,0,0"  Text="{Binding Sala}" TextTransform="Uppercase"  FontSize="18" TextColor="{StaticResource FontColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Sala: &#x0a;"/>
+                                            <Span Text="{Binding Sala}" TextTransform="Uppercase"/>
+                                            <Span Text=" (" TextTransform="Uppercase"/>
+                                            <Span Text="{Binding Unidade}" TextTransform="Uppercase"/>
+                                            <Span Text=")" TextTransform="Uppercase"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="2" Text="{Binding Dia}" FontSize="18"  TextColor="{StaticResource FontColor}"
+                                           HorizontalOptions="EndAndExpand" Margin="0,8,10,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Dia: &#x0a;"/>
+                                            <Span Text="{Binding Dia}" TextTransform="Lowercase" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="RemotoTemplate">
+                <StackLayout>
+                    <Frame IsClippedToBounds="True"
+                               BackgroundColor="White"
+                               BorderColor="{StaticResource CardAccentPink}"
+                               CornerRadius="10"
+                               Margin="10,10,10,30"
+                               Padding="0"
+                               HasShadow="False">
+                        <Grid RowDefinitions="*,*,Auto" ColumnDefinitions="Auto,*">
+                            <BoxView
+                                     Grid.RowSpan="3"
+                                     BackgroundColor="{StaticResource CardAccentPink}"/>
+                            <Image Grid.Row="0" Grid.Column="0"
+                                   Source="sort"
+                                   Margin="8"/>
+                            <Image Grid.Row="1" Grid.Column="0"
+                                   Source="event"
+                                   Margin="8"/>
+                            <Image Grid.Row="2" Grid.Column="0"
+                                   Source="room"
+                                   Margin="8"/>
+                            <Grid Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                          Margin="5,10"
+                                          RowDefinitions="Auto,*,*">
+                                <Label Text="{Binding Disciplina}"  FontSize="14" FontAttributes="Bold" Margin="0,5,0,0" VerticalOptions="Start"  TextColor="{StaticResource FontColor}"/>
+                                <!--<Label Grid.Row="1" Text="{Binding Dia}" FontSize="12" FontAttributes="None"  TextColor="{StaticResource FontColor}"/>-->
+                                <Label Grid.Row="1"
+                                       Margin="0,15,0,0"
+                                       FontSize="16"
+                                       TextColor="{StaticResource FontColor}"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Horário: &#x0a;"/>
+                                            <Span Text="{Binding HoraInicio}"/>
+                                            <Span Text=" - "/>
+                                            <Span Text="{Binding HoraFim}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="2" Margin="0,8,0,0"  Text="{Binding Sala}" TextTransform="Uppercase"  FontSize="18" TextColor="{StaticResource FontColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Sala: &#x0a;"/>
+                                            <Span Text="{Binding Sala}" TextTransform="Uppercase"/>
+                                            <Span Text=" (" TextTransform="Uppercase"/>
+                                            <Span Text="{Binding Unidade}" TextTransform="Uppercase"/>
+                                            <Span Text=")" TextTransform="Uppercase"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="2" Text="{Binding Dia}" FontSize="18"  TextColor="{StaticResource FontColor}"
+                                           HorizontalOptions="EndAndExpand" Margin="0,8,10,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Dia: &#x0a;"/>
+                                            <Span Text="{Binding Dia}" TextTransform="Lowercase" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <tempSel:HomePageTemplateSelector x:Key="templateSelector"
+                                              BlueTemplate="{StaticResource EadTemplate}"
+                                              GreenTemplate="{StaticResource PresencialTemplate}"
+                                              PinkTemplate="{StaticResource RemotoTemplate}"/>
+        </ResourceDictionary>
+        <Color x:Key="CardAccentBlue">#54B7B7</Color>
+        <Color x:Key="CardAccentGreen">#54B778</Color>
+        <Color x:Key="CardAccentPink">#A3A079</Color>
+        <Color x:Key="FontColor">#106F8D</Color>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout xct:StateLayout.CurrentState="{Binding CurrentState}"
+                 xct:StateLayout.AnimateStateChanges="False">
+            <xct:StateLayout.StateViews>
+                <xct:StateView StateKey="Loading"
+                            RepeatCount="8"
+                            Template="{StaticResource EmptyUserTemplate}">
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
+            <CollectionView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}" SelectionMode="None"
+                        SelectionChangedCommand="{Binding DetailsCommand}" VerticalScrollBarVisibility="Never" ItemTemplate="{StaticResource templateSelector}">
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

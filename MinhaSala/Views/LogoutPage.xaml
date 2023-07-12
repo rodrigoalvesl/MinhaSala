@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MinhaSala.Views.LogoutPage">
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Conta" VerticalOptions="CenterAndExpand" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" FontSize="16" TextColor="Black"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,*,*,*" Margin="0,40" >
+            <Image VerticalOptions="StartAndExpand" Margin="30,40,0,0" Source="ibmr"/>
+            <Label Grid.Row="1" TextColor="Black"  VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Usuário:&#x0a;" TextColor="Black" FontSize="14"/>
+                        <Span Text="{Binding Username}" TextColor="Black" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Grid.Row="2" IsVisible="False" VerticalOptions="EndAndExpand" Text="Alterar Cadastro" BackgroundColor="{StaticResource FontColor}" Margin="15,0" TextColor="White" Command="{Binding ChangeCommand}"  />
+            <Button Grid.Row="3" Text="Logout" BackgroundColor="{StaticResource FontColor}" Margin="15,0" VerticalOptions="StartAndExpand" TextColor="White" Command="{Binding OnSignOutCommand}"  />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

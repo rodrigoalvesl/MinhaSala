@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MinhaSala.Controls"
+             x:Class="MinhaSala.Views.LoginPage" Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="30,0,30,0">
+                <Image VerticalOptions="End" Source="ibmr"
+                        Margin="12,90,0,50" HorizontalOptions="Center" />
+                <Label Text="Email" Style="{StaticResource LabelStyle}">
+                    <Label.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="2,0,0,-10"/>
+                            <On Platform="iOS" Value="0"/>
+                        </OnPlatform>
+                    </Label.Margin>
+                </Label>
+                <Entry Text="{Binding Email}" VerticalOptions="Center" ClearButtonVisibility="WhileEditing"/>
+
+                <Label  Text="Senha" Style="{StaticResource LabelStyle}">
+                    <Label.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="2,0,0,-10"/>
+                            <On Platform="iOS" Value="0"/>
+                        </OnPlatform>
+                    </Label.Margin>
+                </Label>
+                <controls:EntryShowPassword Text="{Binding Password}" HorizontalOptions="FillAndExpand" />
+                <Grid ColumnDefinitions="*,4*,Auto" >
+                    <Switch VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Grid.Column="0" IsToggled="{Binding SaveUser}"/>
+                    <Label Grid.Column="1" Text="Lembrar" HorizontalOptions="Start"   Margin="-5,0,0,0" VerticalOptions="CenterAndExpand" Opacity="0.8" TextColor="{StaticResource FontColor}"/>
+                    <Button Grid.Column="2" BackgroundColor="Transparent" Command="{Binding LoginCommand}" Text="Entrar">
+                        <Button.FontSize>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android" Value="14"/>
+                                <On Platform="iOS" Value="18"/>
+                            </OnPlatform>
+                        </Button.FontSize>
+                    </Button>
+                </Grid>
+                <StackLayout >
+                    <Button HorizontalOptions="CenterAndExpand" FontSize="12" BackgroundColor="Transparent"  Command="{Binding ForgotCommand}" Text="Esqueci minha senha"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Já é aluno e recebeu sua matrícula?" HorizontalOptions="Center" Margin="0,60,0,0" TextColor="{StaticResource FontColor}" />
+                    <Button Text="Cadastre-se" BackgroundColor="{StaticResource FontColor}" Margin="15,0" TextColor="White" Command="{Binding SignUpCommand}"  />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

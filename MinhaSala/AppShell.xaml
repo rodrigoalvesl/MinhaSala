@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:views="clr-namespace:MinhaSala.Views"
+    x:Class="MinhaSala.AppShell" >
+
+    <Shell.BackgroundColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="Android" Value="#A3A079"/>
+            <On Platform="iOS" Value="White"/>
+        </OnPlatform> 
+    </Shell.BackgroundColor>
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.BackgroundColor" 
+                        Value="White" />
+                <Setter Property="Shell.ForegroundColor" 
+                        Value="Black" />
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="White" />
+                <Setter Property="Shell.TabBarTitleColor"
+                        Value="Black" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                        Value="Gray" />
+            </Style>
+
+            <Style TargetType="DatePicker">
+                <Setter Property="Format"
+                            Value="dd/MM/yyyy"/>
+            </Style>
+
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <ShellItem Route="Login">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"/>
+    </ShellItem>
+    <TabBar Route="Tabs">
+        <Tab Route="Home" Title="Página Inicial" Icon="HomeTabIcon">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}"/>
+        </Tab>
+        <Tab Route="Logout" Title="Conta" Icon="UserTabIcon">
+            <ShellContent ContentTemplate="{DataTemplate views:LogoutPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>
+

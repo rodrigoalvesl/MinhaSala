@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MinhaSala.Views.ChangeUserPage" Title="Alterar Cadastro">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowDefinitions="*,4*" >
+                <StackLayout Grid.Row="1" Padding="20,50">
+                    <Label Text="Nome de Exibição" Style="{StaticResource LabelStyle}" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="5,0,0,0"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry Text="{Binding Username}" MaxLength="20" ClearButtonVisibility="WhileEditing" Placeholder="Digite seu nome">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,-10,0,10"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Label Text="Email" Style="{StaticResource LabelStyle}" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="5,0,0,0"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry Text="{Binding Email}" ClearButtonVisibility="WhileEditing" Placeholder="Digite seu novo email">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,-10,0,10"/>
+                                <On Platform="iOS" Value="0"/>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Button Text="Salvar" HorizontalOptions="FillAndExpand" Margin="40,20,40,0" Style="{StaticResource ButtonStyle}" Command="{Binding ChangeCommand}" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

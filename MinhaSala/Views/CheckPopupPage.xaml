@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pp:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pp="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"    
+    x:Class="MinhaSala.Views.CheckPopupPage" CloseWhenBackgroundIsClicked="True">
+    <ScrollView VerticalOptions="CenterAndExpand" Margin="20,10" >
+        <Grid RowDefinitions="Auto" >
+            <Frame HasShadow="False" VerticalOptions="FillAndExpand" BackgroundColor="White" CornerRadius="2"/>
+            <StackLayout VerticalOptions="CenterAndExpand" Margin="10" >
+                <Label Text="Informe sua data de nascimento." Margin="0,5"  HorizontalOptions="Center"  />
+                <DatePicker HorizontalOptions="CenterAndExpand" Date="{Binding Date}" Margin="0,0,0,5" MaximumDate="{Binding MaxDate}" />
+                <ActivityIndicator IsRunning="{Binding IsRunning}" IsVisible="{Binding IsRunning}"/>
+                <Button Text="Continuar" BackgroundColor="Transparent" Command="{Binding ValidationCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</pp:PopupPage>
+
