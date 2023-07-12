@@ -1,0 +1,60 @@
+# Autosave files
+*~
+
+# build
+[Oo]bj/
+[Bb]in/
+packages/
+TestResults/
+
+# globs
+Makefile.in
+*.DS_Store
+*.sln.cache
+*.suo
+*.cache
+*.pidb
+*.userprefs
+*.usertasks
+config.log
+config.make
+config.status
+aclocal.m4
+install-sh
+autom4te.cache/
+*.user
+*.tar.gz
+tarballs/
+test-results/
+Thumbs.db
+
+# Mac bundle stuff
+*.dmg
+*.app
+
+# resharper
+*_Resharper.*
+*.Resharper
+
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+# dotCover
+*.dotCover
+Resource.designer.cs
+RealmWeaver.Fody.dll
+.vs/AnimalsOfCostaRica/xs/sqlite3/db.lock
+.vs/AnimalsOfCostaRica/xs/sqlite3/storage.ide
+.vs/AnimalsOfCostaRica/xs/sqlite3/storage.ide-shm
+.vs/AnimalsOfCostaRica/xs/sqlite3/storage.ide-wal
+.vs/SnoozApp/v16/Server/sqlite3/db.lock
+db.lock
+SnoozApp.Core-Debug.json
+SnoozApp.Droid-Debug.json
+SnoozApp.iOS-Debug|iPhone.json
+storage.ide
+
+#Mfractor
+*.mfractor/
+*.db
